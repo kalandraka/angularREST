@@ -1,0 +1,39 @@
+<div ng-controller="usersCtrl">
+    <h1>Users
+        <small>Manage the user entities</small>
+    </h1>
+    <table st-table="displayedCollection" st-safe-src="users" class="table table-striped">
+        <thead>
+        <tr>
+            <th>
+                <p style="margin: 0 0 5px;">
+                    <button type="button" class="btn btn-primary" ng-click="editUserDialog()">
+                        <span class="fa fa-plus"></span> Add
+                    </button>
+                </p>
+            </th>
+            <th colspan="2">
+                <input st-search="name" placeholder="Search for name" class="input-sm form-control" type="search"/>
+            </th>
+        </tr>
+        <tr>
+            <th st-sort="name">Name</th>
+            <th st-sort="password">Password</th>
+            <th st-sort="role">Role</th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr st-select-row="row" ng-repeat="row in displayedCollection">
+            <td>{{row.name}}</td>
+            <td>{{row.password}}</td>
+            <td>{{row.role}}</td>
+            <td>
+                <span class="label label-primary fa fa-pencil" ng-click="editUserDialog(row)"> </span>
+                <span class="label label-danger fa fa-trash" ng-click="deleteUserDialog(row)"> </span>
+                <!--<button type="button" class="fa fa-edit btn-xs btn-primary" ng-click="editUserDialog(row)"></button>-->
+                <!--<button type="button" class="fa fa-trash btn-xs btn-danger" ng-click="deleteUserDialog(row)"></button>-->
+            </td>
+        </tr>
+    </table>
+</div>

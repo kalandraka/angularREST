@@ -1,0 +1,63 @@
+<form name="userForm" novalidate>
+    <div class="modal-header">
+        <h2 class="modal-title"><span class="fa fa-{{icon}}" style="width: 40px"></span>{{title}}</h2>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="userName">
+                        Name:
+                    </label>
+                    <input type="text" class="form-control" id="userName" name="userName" ng-model="nameText" required/>
+                    <span class="error" ng-show="userForm.userName.$invalid && userForm.userName.$dirty ||
+                    userForm.userName.$invalid && showValidation">
+                    Please enter a name
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="userPassword">
+                        Password:
+                    </label>
+                    <input type="text" class="form-control" id="userPassword" name="userPassword"
+                           ng-model="passwordText"
+                           required/>
+                    <span class="error" ng-show="userForm.userPassword.$invalid && showValidation ||
+                    userForm.userPassword.$invalid && userForm.userPassword.$dirty">
+                    Please enter a password
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="userRole">
+                        Role:
+                    </label>
+                    <br>
+                    <!-- Split button -->
+                    <div class="btn-group" style="width: auto" id="userRole">
+                        <button type="button" class="btn btn-default" style="width: 150px;text-align: left;"
+                                data-toggle="dropdown" aria-expanded="false">
+                            {{selectedRole}}
+                        </button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="role in roles"
+                                role="menuitem"><a ng-click="roleSelected(role)">{{role}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</form>
